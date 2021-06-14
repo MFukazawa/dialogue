@@ -21,6 +21,13 @@ const AudioPlayer = ({ track }) => {
     }
   }, [isPlaying]);
 
+  useEffect(() => {
+    return () => {
+      audioRef.current.pause();
+      clearInterval(intervalRef.current);
+    }
+  }, []);
+
   const rewind = () => {
     console.log('go back 10 seconds');
   };

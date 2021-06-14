@@ -16,7 +16,12 @@ const AudioControls = ({ isPlaying, rewind, fastForward, togglePlay }) => {
         <div className="track--filled"></div>
       </div>
 
-      <button className="audio-play" onClick={() => togglePlayPause(isPlaying)}>►</button>
+      <button className="audio-play" onClick={() => togglePlayPause(isPlaying)}>
+        { isPlaying
+          ? <img src="https://s2.svgbox.net/materialui.svg?ic=pause" width="32" height="32" />
+          : <img src="https://s2.svgbox.net/materialui.svg?ic=play_arrow" width="32" height="32" />
+        }
+      </button>
       {/* <input type="range" name="volume" className="player__slider" min="0" max="1" step="0.05" value="1" /> */}
       {/* <input type="range" name="playbackRate" class="player__slider" min="0.5" max="2" step="0.1" value="1" /> */}
       <button data-skip="-10" className="player__button" onClick={() => rewind()}>« 10s</button>
