@@ -16,7 +16,9 @@ const AudioPlayer = ({ track }) => {
   useEffect(() => {
     if (isPlaying) {
       audioRef.current.play();
+      startTimer();
     } else {
+      clearInterval(intervalRef.current)
       audioRef.current.pause();
     }
   }, [isPlaying]);
@@ -28,11 +30,29 @@ const AudioPlayer = ({ track }) => {
     }
   }, []);
 
-  const rewind = () => {
+  const startTimer = () => {
+	  // Clear any timers already running
+	  clearInterval(intervalRef.current);
+
+	  intervalRef.current = setInterval(() => {
+	    if (audioRef.current.ended) {
+	      // toNextTrack();
+        console.log('ended')
+	    } else {
+	      // setTrackProgress(audioRef.current.currentTime);
+        console.log('track progress set')
+	    }
+	  }, [1000]);
+	}
+  
+  const onSkipBack = () => {
+    clearInterval(intervalRef.current);
+    // audioRef.current.currentTime = value;
+    console.log(audioRef.current.currentTime)
     console.log('go back 10 seconds');
   };
 
-  const fastForward = () => {
+  const onSkipForward = () => {
     console.log('go forward 10 seconds')
   }
 
@@ -45,9 +65,10 @@ const AudioPlayer = ({ track }) => {
       />
       <AudioControls
         isPlaying={isPlaying}
-        onRewind={rewind}
-        onFastForward={fastForward}
+        onRewind={onSkipForward}
+        onFastForward={onSkipBack}
         togglePlay={setIsPlaying}
+        audioRef={audioRef}
       />
     </div>
   );
