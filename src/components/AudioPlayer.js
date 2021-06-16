@@ -43,7 +43,6 @@ const AudioPlayer = ({ track }) => {
         setHasEnded(true);
 	    } else {
 	      setTrackProgress(audioRef.current.currentTime);
-        // console.log('track progress set')
 	    }
 	  }, [1000]);
 	}
@@ -61,20 +60,17 @@ const AudioPlayer = ({ track }) => {
     startTimer();
   }
 
-  const handleProgress = () => {
-    const percent = (audioRef.current.currentTime / audioRef.current.duration) * 100;
-    console.log(percent)
-    if (progressBar.current) {
-      progressBar.current.style.flexBasis = `${percent}%`;
-    }
-  }
+  const currentPercentage = duration ? `${(trackProgress / duration) * 100}%` : '0%';
+  const trackStyling = `
+    -webkit-gradient(linear, 0% 0%, 100% 0%, color-stop(${currentPercentage}, #000), color-stop(${currentPercentage}, #777))
+  `;
 
   return (
-    <div className="audio-player" onTimeUpdate={handleProgress()}>
-      <img
+    <AudioPlayerContainer>
+      <AudioPlayerBackground
         className="background"
         src={background}
-        alt="Japanese shrine with red torii in the background"
+        alt="Japanese estate with red torii in the background"
       />
 
       <AudioControls
@@ -84,29 +80,41 @@ const AudioPlayer = ({ track }) => {
         hasEnded={hasEnded}
       />
 
-      <Track>
-        <ProgressBar ref={progressBar}></ProgressBar>
-      </Track>
-    </div>
+      <ProgressBar
+        type="range"
+        value={trackProgress}
+        step="1"
+        min="0"
+        max={duration ? duration : `${duration}`}
+        className="progress"
+        onChange={(e) => onScrub(e.target.value)}
+        onMouseUp={onScrubEnd}
+        onKeyUp={onScrubEnd}
+        style={{ background: trackStyling }}
+      />
+    </AudioPlayerContainer>
   );
 };
 
-const Track = styled.div`
-  flex: 10;
-  position: relative;
-  display: flex;
-  flex-basis: 100%;
-  height: 5px;
-  transition: height 0.3s;
-  background: rgba(0,0,0,0.5);
-  cursor: ew-resize;
-`;
+const AudioPlayerContainer = styled.main`
+  max-width: 70ch;
+  padding: 2ch;
+  margin: auto;
+`
 
-const ProgressBar = styled.div`
-  width: 50%;
-  background: #ffc600;
-  flex: 0;
-  flex-basis: 50%;
+const AudioPlayerBackground = styled.img`
+  width: 100%;
+`
+
+const ProgressBar = styled.input`
+  height: 5px;
+  -webkit-appearance: none;
+  width: 100%;
+  margin-bottom: 10px;
+  border-radius: 8px;
+  background: #3b7677;
+  transition: background 0.2s ease;
+  cursor: pointer;
 `
 
 export default AudioPlayer;

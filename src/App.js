@@ -1,9 +1,9 @@
-import Novel from './components/Novel'
+import AudioPlayer from './components/AudioPlayer'
 
 function App() {
   return (
     <div className="app">
-      <Novel />
+      <AudioPlayer />
     </div>
   );
 }
