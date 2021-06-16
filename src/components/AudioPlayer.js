@@ -84,7 +84,6 @@ const AudioPlayer = ({ track }) => {
         step="1"
         min="0"
         max={duration ? duration : `${duration}`}
-        className="progress"
         onChange={(e) => onScrub(e.target.value)}
         onMouseUp={onScrubEnd}
         onKeyUp={onScrubEnd}
@@ -101,12 +100,12 @@ const AudioPlayerContainer = styled.main`
 `
 
 const ProgressBar = styled.input`
+  display: block;
   height: 5px;
   -webkit-appearance: none;
-  width: 100%;
-  margin-bottom: 10px;
+  width: 50%;
+  margin: 0 auto;
   border-radius: 8px;
-  background: #3b7677;
   transition: background 0.2s ease;
   cursor: pointer;
 `

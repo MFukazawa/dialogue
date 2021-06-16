@@ -18,11 +18,11 @@ const Yuusaku = ({ isPlaying, trackProgress }) => {
   const isLaughPose = trackProgress > 23 && trackProgress < 40;
 
   if (isPlaying && isRegularPose) {
-    return <YuusakuImage style={props} src={regularPose} alt="Drawing of Yuusaku, a boy with glasses and hands on his hips" />
+    return <YuusakuImage style={props} src={regularPose} alt="Drawing of Yuusaku, a boy with glasses and hands on his hips." />
   } else if (isPlaying && isThoughtPose) {
-    return <YuusakuImage style={props} src={thoughtPose} alt="Drawing of Yuusaku, a boy with glasses and hands on his hips" />
+    return <YuusakuImage style={props} src={thoughtPose} alt="Drawing of Yuusaku, a boy with glasses in a thinking pose." />
   } else if (isPlaying && isLaughPose) {
-    return <YuusakuImage style={props} src={laughPose} alt="Drawing of Yuusaku, a boy with glasses and hands on his hips" />
+    return <YuusakuImage style={props} src={laughPose} alt="Drawing of Yuusaku, a boy with glasses laughing." />
   }
 
   return null;

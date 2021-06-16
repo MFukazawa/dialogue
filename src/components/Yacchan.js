@@ -18,11 +18,11 @@ const Yacchan = ({ isPlaying, trackProgress }) => {
   const isRegularPose = trackProgress > 33;
 
   if (isPlaying && isRegularPose) {
-    return <YacchanImage style={props} src={regularPose} alt="Drawing of Yacchan, a girl with glasses and hands on his hips" />
+    return <YacchanImage style={props} src={regularPose} alt="Drawing of Yacchan, a blonde girl in a happy pose." />
   } else if (isPlaying && isSidePose) {
-    return <YacchanImage style={props} src={sidePose} alt="Drawing of Yacchan, a girl with glasses and hands on his hips" />
+    return <YacchanImage style={props} src={sidePose} alt="Drawing of Yacchan, a blonde girl smiling." />
   } else if (isPlaying && isThoughtPose) {
-    return <YacchanImage style={props} src={thoughtPose} alt="Drawing of Yacchan, a girl with glasses and hands on his hips" />
+    return <YacchanImage style={props} src={thoughtPose} alt="Drawing of Yacchan, a blonde girl looking inquisitive." />
   }
 
   return null;
