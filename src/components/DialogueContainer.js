@@ -11,12 +11,8 @@ const DialogueContainer = ({ text, isPlaying }) => {
   });
 
   if (isPlaying) {
-    return (
-      <DialogueBox style={props}>
-        {text}
-      </DialogueBox>
-    );
-  };
+    return <DialogueBox style={props}>{text}</DialogueBox>;
+  }
 
   return null;
 };
