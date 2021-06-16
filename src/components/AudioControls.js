@@ -1,10 +1,6 @@
 import React from 'react';
 import styled from 'styled-components';
 
-const AudioControlsContainer = styled.div`
-  width: 100%;
-`
-
 const AudioControls = ({ audioRef, isPlaying, togglePlay, hasEnded }) => {
   const togglePlayPause = (isPlaying) => {
     return isPlaying ? togglePlay(false) : togglePlay(true);
@@ -19,19 +15,19 @@ const AudioControls = ({ audioRef, isPlaying, togglePlay, hasEnded }) => {
       return isPlaying
         ? <img src="https://s2.svgbox.net/materialui.svg?ic=pause" width="32" height="32" />
         : <img src="https://s2.svgbox.net/materialui.svg?ic=play_arrow" width="32" height="32" />
-    } else {
+    } else if (hasEnded && !isPlaying) {
       return isPlaying
         ? <img src="https://s2.svgbox.net/materialui.svg?ic=pause" width="32" height="32" />
         : <img src="https://s2.svgbox.net/materialui.svg?ic=replay" width="32" height="32" />
+    } else {
+      return isPlaying
+      ? <img src="https://s2.svgbox.net/materialui.svg?ic=pause" width="32" height="32" />
+      : <img src="https://s2.svgbox.net/materialui.svg?ic=play_arrow" width="32" height="32" />
     }
   };
 
   return (
     <AudioControlsContainer>
-      <div className="track">
-        <div className="track--filled"></div>
-      </div>
-
       <button className="audio-play" onClick={() => togglePlayPause(isPlaying)}>
         {playButtonIcon()}
       </button>
@@ -42,5 +38,10 @@ const AudioControls = ({ audioRef, isPlaying, togglePlay, hasEnded }) => {
     </AudioControlsContainer>
   )
 };
+
+// CSS
+const AudioControlsContainer = styled.div`
+  width: 100%;
+`
 
 export default AudioControls;
