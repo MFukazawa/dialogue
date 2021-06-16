@@ -22,21 +22,21 @@ const AudioControls = ({ audioRef, isPlaying, togglePlay, hasEnded }) => {
     // } else {
       // TODO fix the restart button
       return isPlaying
-      ? <img src="https://s2.svgbox.net/materialui.svg?ic=pause" width="32" height="32" />
-      : <img src="https://s2.svgbox.net/materialui.svg?ic=play_arrow" width="32" height="32" />
+      ? <img src="https://s2.svgbox.net/materialui.svg?ic=pause" width="32" height="32" alt="Pause button icon" />
+      : <img src="https://s2.svgbox.net/materialui.svg?ic=play_arrow" width="32" height="32" alt="Play button icon" />
     // }
   };
 
   return (
     <AudioControlsContainer>
       <AudioControl className="player__button" onClick={(e) => skip(e.target.dataset.skip)}>
-        <img data-skip="-10" src="https://s2.svgbox.net/materialui.svg?ic=fast_rewind"></img>
+        <img data-skip="-10" src="https://s2.svgbox.net/materialui.svg?ic=fast_rewind" alt="Rewind 10 seconds button icon" />
       </AudioControl>
       <AudioControl className="audio-play" onClick={() => togglePlayPause(isPlaying)}>
         {playButtonIcon()}
       </AudioControl>
       <AudioControl className="player__button" onClick={(e) => skip(e.target.dataset.skip)}>
-        <img data-skip="10" src="https://s2.svgbox.net/materialui.svg?ic=fast_forward"></img>
+        <img data-skip="10" src="https://s2.svgbox.net/materialui.svg?ic=fast_forward" alt="Fast forward 10 seconds button icon" />
       </AudioControl>
     </AudioControlsContainer>
   )

@@ -2,7 +2,7 @@ import React, { useState, useEffect, useRef } from 'react';
 import styled from 'styled-components';
 import AudioControls from './AudioControls';
 import audioSrc from '../assets/audio/dialogue.mp3';
-import background from '../assets/images/background_1.png';
+import VisualNovel from './VisualNovel';
 
 const AudioPlayer = ({ track }) => {
   const [trackProgress, setTrackProgress] = useState(0);
@@ -11,8 +11,7 @@ const AudioPlayer = ({ track }) => {
 
   const audioRef = useRef(new Audio(audioSrc));
   const intervalRef = useRef();
-  const isReady = useRef(false);
-  const progressBar = useRef(null);
+  // const isReady = useRef(false);
 
   const { duration } = audioRef.current;
 
@@ -67,10 +66,9 @@ const AudioPlayer = ({ track }) => {
 
   return (
     <AudioPlayerContainer>
-      <AudioPlayerBackground
-        className="background"
-        src={background}
-        alt="Japanese estate with red torii in the background"
+      <VisualNovel
+        isPlaying={isPlaying}
+        trackProgress={trackProgress}
       />
 
       <AudioControls
@@ -97,13 +95,9 @@ const AudioPlayer = ({ track }) => {
 };
 
 const AudioPlayerContainer = styled.main`
-  max-width: 70ch;
+  max-width: 80ch;
   padding: 2ch;
   margin: auto;
-`
-
-const AudioPlayerBackground = styled.img`
-  width: 100%;
 `
 
 const ProgressBar = styled.input`
