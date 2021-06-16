@@ -1,15 +1,27 @@
 import React from 'react';
 import styled from 'styled-components';
+import { useSpring, animated, config } from 'react-spring';
 
-const DialogueContainer = ({ isPlaying, trackProgress }) => {
-  return (
-    <DialogueBox>
-      test
-    </DialogueBox>
-  );
+const DialogueContainer = ({ text, isPlaying }) => {
+  const props = useSpring({
+    to: { opacity: 1 },
+    from: { opacity: 0 },
+    delay: 1000,
+    config: config.molasses,
+  });
+
+  if (isPlaying) {
+    return (
+      <DialogueBox style={props}>
+        {text}
+      </DialogueBox>
+    );
+  };
+
+  return null;
 };
 
-const DialogueBox = styled.div`
+const DialogueBox = styled(animated.div)`
   position: absolute;
   top: 20px;
   left: 0;
@@ -19,6 +31,7 @@ const DialogueBox = styled.div`
   margin: 0 auto;
   padding: 30px;
   border: 1px solid #ddd;
+  border-radius: 4px;
   background: hsl(0deg 0% 100% / 0.6);
 `;
 

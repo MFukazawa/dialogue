@@ -5,11 +5,11 @@ import DialogueContainer from './DialogueContainer';
 import Yuusaku from './Yuusaku';
 import Yacchan from './Yacchan';
 
-const VisualNovel = ({ isPlaying, trackProgress }) => {
+const VisualNovel = ({ isPlaying, trackProgress, text }) => {
   return (
     <VisualNovelContainer alt='Japanese estate with red torii in the background'>
       <VisualNovelBackground src={background} />
-      <DialogueContainer trackProgress={trackProgress} />
+      <DialogueContainer trackProgress={trackProgress} text={text} isPlaying={isPlaying} />
       <Yuusaku isPlaying={isPlaying} trackProgress={trackProgress} />
       <Yacchan isPlaying={isPlaying} trackProgress={trackProgress} />
     </VisualNovelContainer>

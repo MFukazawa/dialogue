@@ -73,9 +73,11 @@ const AudioPlayer = ({ track }) => {
     console.log('playing transcript');
   };
 
+  const text = "testing"
+
   return (
     <AudioPlayerContainer onTimeUpdate={playTranscript()}>
-      <VisualNovel isPlaying={isPlaying} trackProgress={trackProgress} />
+      <VisualNovel isPlaying={isPlaying} trackProgress={trackProgress} text={text} />
 
       <AudioControls
         isPlaying={isPlaying}
