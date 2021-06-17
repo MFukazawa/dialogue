@@ -5,7 +5,7 @@ import thoughtPose from '../assets/images/yacchan/pose_3.png';
 import { useSpring, animated, config } from 'react-spring';
 import styled from 'styled-components';
 
-const Yacchan = ({ isPlaying, trackProgress }) => {
+const Yacchan = ({ isPlaying, trackProgress, currentFocus }) => {
   const props = useSpring({
     to: { opacity: 1 },
     from: { opacity: 0 },
@@ -13,14 +13,18 @@ const Yacchan = ({ isPlaying, trackProgress }) => {
     config: config.molasses,
   });
 
+
   const isSidePose = trackProgress < 19;
   const isThoughtPose = trackProgress > 19 && trackProgress < 33;
   const isRegularPose = trackProgress > 33;
+
+  const focused = currentFocus === 'Yacchan' ? 'focused' : '';
 
   if (isPlaying && isRegularPose) {
     return (
       <YacchanImage
         style={props}
+        focused={focused}
         src={regularPose}
         alt='Drawing of Yacchan, a blonde girl in a happy pose.'
       />
@@ -29,6 +33,7 @@ const Yacchan = ({ isPlaying, trackProgress }) => {
     return (
       <YacchanImage
         style={props}
+        focused={focused}
         src={sidePose}
         alt='Drawing of Yacchan, a blonde girl smiling.'
       />
@@ -37,6 +42,7 @@ const Yacchan = ({ isPlaying, trackProgress }) => {
     return (
       <YacchanImage
         style={props}
+        focused={focused}
         src={thoughtPose}
         alt='Drawing of Yacchan, a blonde girl looking inquisitive.'
       />
@@ -49,8 +55,8 @@ const Yacchan = ({ isPlaying, trackProgress }) => {
 const YacchanImage = styled(animated.img)`
   position: absolute;
   bottom: 0;
-  right: 20%;
-  height: 50%;
+  left: 20%;
+  height: ${props => props.focused ? '60%' : '50%'};
 `;
 
 export default Yacchan;

@@ -5,7 +5,7 @@ import laughPose from '../assets/images/yuusaku/pose_3.png';
 import { useSpring, animated, config } from 'react-spring';
 import styled from 'styled-components';
 
-const Yuusaku = ({ isPlaying, trackProgress }) => {
+const Yuusaku = ({ isPlaying, trackProgress, currentFocus }) => {
   const props = useSpring({
     to: { opacity: 1 },
     from: { opacity: 0 },
@@ -17,10 +17,13 @@ const Yuusaku = ({ isPlaying, trackProgress }) => {
   const isThoughtPose = trackProgress > 9 && trackProgress < 23;
   const isLaughPose = trackProgress > 23 && trackProgress < 40;
 
+  const focused = currentFocus === 'Yuusaku' ? 'focused' : '';
+
   if (isPlaying && isRegularPose) {
     return (
       <YuusakuImage
         style={props}
+        focused={focused}
         src={regularPose}
         alt='Drawing of Yuusaku, a boy with glasses and hands on his hips.'
       />
@@ -29,6 +32,7 @@ const Yuusaku = ({ isPlaying, trackProgress }) => {
     return (
       <YuusakuImage
         style={props}
+        focused={focused}
         src={thoughtPose}
         alt='Drawing of Yuusaku, a boy with glasses in a thinking pose.'
       />
@@ -37,6 +41,7 @@ const Yuusaku = ({ isPlaying, trackProgress }) => {
     return (
       <YuusakuImage
         style={props}
+        focused={focused}
         src={laughPose}
         alt='Drawing of Yuusaku, a boy with glasses laughing.'
       />
@@ -49,8 +54,8 @@ const Yuusaku = ({ isPlaying, trackProgress }) => {
 const YuusakuImage = styled(animated.img)`
   position: absolute;
   bottom: 0;
-  left: 20%;
-  height: 50%;
+  right: 20%;
+  height: ${props => props.focused ? '60%' : '50%'};
 `;
 
 export default Yuusaku;

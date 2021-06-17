@@ -72,6 +72,53 @@ const AudioPlayer = ({ track }) => {
 
   // Script
   let currentSubtitle = '';
+  let currentFocus = '';
+
+  // useEffect(() => {
+  const subtitles = [
+    {
+      start: '0:00:00',
+      end: '0:03:90',
+      text: 'Yuusaku: "Uh...Where are we?"',
+      focused: 'Yuusaku'
+    },
+    {
+      start: '0:03:90',
+      end: '0:07:90',
+      text: 'Yacchan: "This is our home, Yuusaku!"',
+      focused: 'Yacchan'
+    },
+    {
+      start: '0:07:90',
+      end: '0:10:00',
+      text: 'Yuusaku: "Oh...(I guess that means we live here together..?)"',
+      focused: 'Yuusaku'
+    },
+    {
+      start: '0:10:00',
+      end: '0:16:90',
+      text: 'Yuusaku: "Oh...(I guess that means we live here together..?)"',
+      focused: 'Yuusaku'
+    },
+    {
+      start: '0:16:90',
+      end: '0:23:50',
+      text: 'Yacchan: "This is the first time you\'ve been home in a week. Do you remember anything?"',
+      focused: 'Yacchan'
+    },
+    {
+      start: '0:23:50',
+      end: '0:32:00',
+      text: 'Yuusaku: "No...... Everything still feels foreign to me. Err...... Sorry, I guess."',
+      focused: 'Yuusaku'
+    },
+    {
+      start: '0:32:00',
+      end: '0:40:00',
+      text: 'Yacchan: "Oh, it\'s okay, you don\'t need to apologize. Take your time and everything will come back to you little by little."',
+      focused: 'Yacchan'
+    },
+  ];
 
   const playTranscript = () => {
     try {
@@ -79,8 +126,10 @@ const AudioPlayer = ({ track }) => {
         const getTimeInSeconds = (timestamp) => {
           // timestamp format minutes/seconds/milliseconds
           const timeArray = timestamp.split(':').map((e) => parseInt(e));
-          return parseFloat(timeArray[0] * 60 + timeArray[1] + (timeArray[2] / 100));
-        };
+          return parseFloat(
+            timeArray[0] * 60 + timeArray[1] + timeArray[2] / 100
+          );
+       };
 
         const currentTime = audioRef.current.currentTime;
 
@@ -88,53 +137,27 @@ const AudioPlayer = ({ track }) => {
           currentTime >= getTimeInSeconds(subtitle.start) &&
           currentTime <= getTimeInSeconds(subtitle.end)
         ) {
-          currentSubtitle = subtitle.text
+          // setCurrentSubtitle(subtitle.text)
+          currentSubtitle = subtitle.text;
+          currentFocus = subtitle.focused;
         }
       });
     } catch (e) {
-      console.log(e)
+      console.log(e);
     }
   };
 
-  const subtitles = [
-    {
-      start: '0:00:00',
-      end: '0:03:90',
-      text: 'Yuusaku: "Uh...Where are we?"',
-    },
-    {
-      start: '0:03:90',
-      end: '0:07:90',
-      text: 'Yacchan: "This is our home, Yuusaku!"',
-    },
-    {
-      start: '0:07:90',
-      end: '0:14:00',
-      text: 'Yuusaku: "Oh...(I guess that means we live here together..?)"',
-    },
-    {
-      start: '0:16:90',
-      end: '0:23:50',
-      text: 'Yacchan: "This is the first time you\'ve been home in a week. Do you remember anything?"',
-    },
-    {
-      start: '0:23:50',
-      end: '0:32:00',
-      text: 'Yuusaku: "No...... Everything still feels foreign to me. Err...... Sorry, I guess."',
-    },
-    {
-      start: '0:32:00',
-      end: '0:40:00',
-      text: 'Yacchan: "Oh, it\'s okay, you don\'t need to apologize. Take your time and everything will come back to you little by little."',
-    },
-  ];
+  //   playTranscript();
+  // }, [currentSubtitle])
 
   return (
+    // TODO update onTimeUpdate={() => playTranscript}
     <AudioPlayerContainer onTimeUpdate={playTranscript()}>
       <VisualNovel
         isPlaying={isPlaying}
         trackProgress={trackProgress}
         currentSubtitle={currentSubtitle}
+        currentFocus={currentFocus}
       />
 
       <AudioControls

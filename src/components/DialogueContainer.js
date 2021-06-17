@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react';
+import React from 'react';
 import styled from 'styled-components';
 import { useSpring, animated, config } from 'react-spring';
 
@@ -19,7 +19,7 @@ const DialogueContainer = ({ isPlaying, currentSubtitle }) => {
     config: config.molasses
   });
 
-  if (isPlaying && currentSubtitle.length > 0) {
+  if (isPlaying) {
     return (
       <DialogueBox style={props}>
         <SubtitleText style={propsTest}>{currentSubtitle}</SubtitleText>
