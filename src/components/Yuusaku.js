@@ -13,9 +13,11 @@ const Yuusaku = ({ isPlaying, trackProgress, currentFocus }) => {
     config: config.molasses,
   });
 
+  // TODO receive via props
+  // ** Pose timing changed from original **
   const isRegularPose = trackProgress < 9 || trackProgress > 40;
-  const isThoughtPose = trackProgress > 9 && trackProgress < 23;
-  const isLaughPose = trackProgress > 23 && trackProgress < 40;
+  const isThoughtPose = trackProgress > 9 && trackProgress < 23.5;
+  const isLaughPose = trackProgress > 23.5 && trackProgress < 40;
 
   const focused = currentFocus === 'Yuusaku' ? 'focused' : '';
 

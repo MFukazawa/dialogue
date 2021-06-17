@@ -13,7 +13,8 @@ const Yacchan = ({ isPlaying, trackProgress, currentFocus }) => {
     config: config.molasses,
   });
 
-
+  // TODO receive via props
+  // ** Pose timing changed from original **
   const isSidePose = trackProgress < 19;
   const isThoughtPose = trackProgress > 19 && trackProgress < 33;
   const isRegularPose = trackProgress > 33;

@@ -38,13 +38,18 @@ const AudioPlayer = ({ track }) => {
     clearInterval(intervalRef.current);
 
     intervalRef.current = setInterval(() => {
+      if (audioRef.current.currentTime === audioRef.current.duration) {
+        setHasEnded(true)
+      } else {
+        setHasEnded(false)
+      }
+
       if (audioRef.current.ended) {
         setIsPlaying(false);
-        setHasEnded(true);
       } else {
         setTrackProgress(audioRef.current.currentTime);
       }
-    }, [1000]);
+    }, [500]);
   };
 
   const onScrub = (value) => {

@@ -11,31 +11,28 @@ const AudioControls = ({ audioRef, isPlaying, togglePlay, hasEnded }) => {
   };
 
   const playButtonIcon = () => {
-    // if (!hasEnded) {
-    //   return isPlaying
-    //     ? <img src="https://s2.svgbox.net/materialui.svg?ic=pause" width="32" height="32" />
-    //     : <img src="https://s2.svgbox.net/materialui.svg?ic=play_arrow" width="32" height="32" />
-    // } else if (hasEnded && !isPlaying) {
-    //   return isPlaying
-    //     ? <img src="https://s2.svgbox.net/materialui.svg?ic=pause" width="32" height="32" />
-    //     : <img src="https://s2.svgbox.net/materialui.svg?ic=replay" width="32" height="32" />
-    // } else {
-    // TODO fix the restart button
-    return isPlaying ? (
-      <img
-        src='https://s2.svgbox.net/materialui.svg?ic=pause'
-        width='32'
-        height='32'
-        alt='Pause button icon'
-      />
-    ) : (
-      <img
-        src='https://s2.svgbox.net/materialui.svg?ic=play_arrow'
-        width='32'
-        height='32'
-        alt='Play button icon'
-      />
-    );
+    if (!hasEnded) {
+      return isPlaying ? (
+        <img
+          src='https://s2.svgbox.net/materialui.svg?ic=pause'
+          width='32'
+          height='32'
+          alt='Pause button icon'
+        />
+      ) : (
+        <img
+          src='https://s2.svgbox.net/materialui.svg?ic=play_arrow'
+          width='32'
+          height='32'
+          alt='Play button icon'
+        />
+      );
+    } else {
+      return (
+        <img src="https://s2.svgbox.net/materialui.svg?ic=replay" width="32" height="32" alt="Replay button icon" />
+      );
+    }
+
     // }
   };
 
