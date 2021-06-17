@@ -2,16 +2,25 @@ import React from 'react';
 import regularPose from '../assets/images/yacchan/pose_1.png';
 import sidePose from '../assets/images/yacchan/pose_2.png';
 import thoughtPose from '../assets/images/yacchan/pose_3.png';
-import { useSpring, animated, config } from 'react-spring';
+import { useSpring, animated, config, useTransition } from 'react-spring';
 import styled from 'styled-components';
 
 const Yacchan = ({ isPlaying, trackProgress, currentFocus }) => {
   const props = useSpring({
     to: { opacity: 1 },
     from: { opacity: 0 },
-    delay: 1000,
+    leave: { opacity: 0 },
+    delay: 2000,
     config: config.molasses,
   });
+
+  // const transitions = useTransition({
+  //   from: { opacity: 0 },
+  //   enter: { opacity: 1 },
+  //   leave: { opacity: 0 },
+  //   delay: 1200,
+  //   config: config.molasses,
+  // });
 
   // TODO receive via props
   // ** Pose timing changed from original **
@@ -20,6 +29,9 @@ const Yacchan = ({ isPlaying, trackProgress, currentFocus }) => {
   const isRegularPose = trackProgress > 33;
 
   const focused = currentFocus === 'Yacchan' ? 'focused' : '';
+  // const displayRegularPose = isPlaying && isRegularPose ? 'true' : ''
+  // const displaySidePose = isPlaying && isSidePose ? 'true' : ''
+  // const displayThoughtPose = isPlaying && isThoughtPose ? 'true' : ''
 
   if (isPlaying && isRegularPose) {
     return (
@@ -28,6 +40,7 @@ const Yacchan = ({ isPlaying, trackProgress, currentFocus }) => {
         focused={focused}
         src={regularPose}
         alt='Drawing of Yacchan, a blonde girl in a happy pose.'
+        onAnimationEnd={() => console.log('animation ended')}
       />
     );
   } else if (isPlaying && isSidePose) {
@@ -37,6 +50,7 @@ const Yacchan = ({ isPlaying, trackProgress, currentFocus }) => {
         focused={focused}
         src={sidePose}
         alt='Drawing of Yacchan, a blonde girl smiling.'
+        onAnimationEnd={() => console.log('animation ended')}
       />
     );
   } else if (isPlaying && isThoughtPose) {
@@ -46,6 +60,7 @@ const Yacchan = ({ isPlaying, trackProgress, currentFocus }) => {
         focused={focused}
         src={thoughtPose}
         alt='Drawing of Yacchan, a blonde girl looking inquisitive.'
+        onAnimationEnd={() => console.log('animation ended')}
       />
     );
   }
