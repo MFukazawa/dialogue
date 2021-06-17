@@ -8,6 +8,7 @@ const AudioPlayer = ({ track }) => {
   const [trackProgress, setTrackProgress] = useState(0);
   const [isPlaying, setIsPlaying] = useState(false);
   const [hasEnded, setHasEnded] = useState(false);
+  // const [currentSubtitle, setCurrentSubtitle] = useState('');
 
   const audioRef = useRef(new Audio(audioSrc));
   const intervalRef = useRef();
@@ -25,8 +26,9 @@ const AudioPlayer = ({ track }) => {
   }, [isPlaying]);
 
   useEffect(() => {
+    const pauseAudio = audioRef.current;
     return () => {
-      audioRef.current.pause();
+      pauseAudio.pause();
       clearInterval(intervalRef.current);
     };
   }, []);
@@ -69,15 +71,71 @@ const AudioPlayer = ({ track }) => {
   `;
 
   // Script
+  let currentSubtitle = '';
+
   const playTranscript = () => {
-    console.log('playing transcript');
+    try {
+      subtitles.forEach((subtitle, index, array) => {
+        const getTimeInSeconds = (timestamp) => {
+          // timestamp format minutes/seconds/milliseconds
+          const timeArray = timestamp.split(':').map((e) => parseInt(e));
+          return parseFloat(timeArray[0] * 60 + timeArray[1] + (timeArray[2] / 100));
+        };
+
+        const currentTime = audioRef.current.currentTime;
+
+        if (
+          currentTime >= getTimeInSeconds(subtitle.start) &&
+          currentTime <= getTimeInSeconds(subtitle.end)
+        ) {
+          currentSubtitle = subtitle.text
+        }
+      });
+    } catch (e) {
+      console.log(e)
+    }
   };
 
-  const text = "testing"
+  const subtitles = [
+    {
+      start: '0:00:00',
+      end: '0:03:90',
+      text: 'Yuusaku: "Uh...Where are we?"',
+    },
+    {
+      start: '0:03:90',
+      end: '0:07:90',
+      text: 'Yacchan: "This is our home, Yuusaku!"',
+    },
+    {
+      start: '0:07:90',
+      end: '0:14:00',
+      text: 'Yuusaku: "Oh...(I guess that means we live here together..?)"',
+    },
+    {
+      start: '0:16:90',
+      end: '0:23:50',
+      text: 'Yacchan: "This is the first time you\'ve been home in a week. Do you remember anything?"',
+    },
+    {
+      start: '0:23:50',
+      end: '0:32:00',
+      text: 'Yuusaku: "No...... Everything still feels foreign to me. Err...... Sorry, I guess."',
+    },
+    {
+      start: '0:32:00',
+      end: '0:40:00',
+      text: 'Yacchan: "Oh, it\'s okay, you don\'t need to apologize. Take your time and everything will come back to you little by little."',
+    },
+  ];
 
   return (
     <AudioPlayerContainer onTimeUpdate={playTranscript()}>
-      <VisualNovel isPlaying={isPlaying} trackProgress={trackProgress} text={text} />
+      <VisualNovel
+        isPlaying={isPlaying}
+        trackProgress={trackProgress}
+        currentSubtitle={currentSubtitle}
+      />
 
       <AudioControls
         isPlaying={isPlaying}
