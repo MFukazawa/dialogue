@@ -6,7 +6,12 @@ import Yuusaku from './Yuusaku';
 import Yacchan from './Yacchan';
 import Sweat from './Sweat';
 
-const VisualNovel = ({ isPlaying, trackProgress, currentSubtitle, currentFocus }) => {
+const VisualNovel = ({
+  isPlaying,
+  trackProgress,
+  currentSubtitle,
+  currentFocus,
+}) => {
   return (
     <VisualNovelContainer alt='Japanese estate with red torii in the background'>
       <VisualNovelBackground src={background} />
@@ -15,8 +20,16 @@ const VisualNovel = ({ isPlaying, trackProgress, currentSubtitle, currentFocus }
         isPlaying={isPlaying}
         currentSubtitle={currentSubtitle}
       />
-      <Yuusaku isPlaying={isPlaying} trackProgress={trackProgress} currentFocus={currentFocus} />
-      <Yacchan isPlaying={isPlaying} trackProgress={trackProgress} currentFocus={currentFocus} />
+      <Yuusaku
+        isPlaying={isPlaying}
+        trackProgress={trackProgress}
+        currentFocus={currentFocus}
+      />
+      <Yacchan
+        isPlaying={isPlaying}
+        trackProgress={trackProgress}
+        currentFocus={currentFocus}
+      />
       <Sweat trackProgress={trackProgress} />
     </VisualNovelContainer>
   );

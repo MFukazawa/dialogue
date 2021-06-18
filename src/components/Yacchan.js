@@ -6,7 +6,7 @@ import { animated, config, useTransition } from 'react-spring';
 import styled from 'styled-components';
 
 const Yacchan = ({ isPlaying, trackProgress, currentFocus }) => {
-  const [currentPose, setCurrentPose] = useState('')
+  const [currentPose, setCurrentPose] = useState('');
 
   const transitions = useTransition(currentPose, {
     from: { opacity: 0 },
@@ -25,49 +25,57 @@ const Yacchan = ({ isPlaying, trackProgress, currentFocus }) => {
 
   useEffect(() => {
     if (isPlaying && isSidePose) {
-      setCurrentPose('side')
+      setCurrentPose('side');
     }
 
     if (isPlaying && isThoughtPose) {
-      setCurrentPose('thought')
+      setCurrentPose('thought');
     }
 
     if (isPlaying && isRegularPose) {
-      setCurrentPose('regular')
+      setCurrentPose('regular');
     }
 
     if (!isPlaying) {
-      setCurrentPose('')
+      setCurrentPose('');
     }
-  }, [trackProgress, isPlaying, isRegularPose, isSidePose, isThoughtPose])
-
+  }, [trackProgress, isPlaying, isRegularPose, isSidePose, isThoughtPose]);
 
   if (currentPose === 'regular') {
-    return transitions((styles, item) => item &&
-      <YacchanImage
-        style={styles}
-        focused={focused}
-        src={regularPose}
-        alt='Drawing of Yacchan, a blonde girl in a happy pose.'
-      />
+    return transitions(
+      (styles, item) =>
+        item && (
+          <YacchanImage
+            style={styles}
+            focused={focused}
+            src={regularPose}
+            alt='Drawing of Yacchan, a blonde girl in a happy pose.'
+          />
+        )
     );
   } else if (currentPose === 'side') {
-    return transitions((styles, item) => item &&
-      <YacchanImage
-        style={styles}
-        focused={focused}
-        src={sidePose}
-        alt='Drawing of Yacchan, a blonde girl smiling.'
-      />
+    return transitions(
+      (styles, item) =>
+        item && (
+          <YacchanImage
+            style={styles}
+            focused={focused}
+            src={sidePose}
+            alt='Drawing of Yacchan, a blonde girl smiling.'
+          />
+        )
     );
   } else if (currentPose === 'thought') {
-    return transitions((styles, item) => item &&
-      <YacchanImage
-        style={styles}
-        focused={focused}
-        src={thoughtPose}
-        alt='Drawing of Yacchan, a blonde girl looking inquisitive.'
-      />
+    return transitions(
+      (styles, item) =>
+        item && (
+          <YacchanImage
+            style={styles}
+            focused={focused}
+            src={thoughtPose}
+            alt='Drawing of Yacchan, a blonde girl looking inquisitive.'
+          />
+        )
     );
   }
 
