@@ -17,3 +17,8 @@ body {
   bottom: 50%;
   right: 20%;
 }
+
+.active {
+  color: mediumvioletred;
+  font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
+}
