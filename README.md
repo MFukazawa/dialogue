@@ -31,7 +31,7 @@ characters change poses and text changes in a dialogue box as the audio track ru
 #### Consider simple animation effects:
 - [ ] Blinking: characters randomly blink over time.
 - [ ] Mouth movement: animate characters’ mouths when they are talking.
-- [x] Effects on top of characters: like sweat drops, angry... *******
+- [x] Effects on top of characters: like sweat drops, angry... 
 
 
 #### Consider text effects:
