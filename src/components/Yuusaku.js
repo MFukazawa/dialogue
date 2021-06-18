@@ -58,6 +58,7 @@ const YuusakuImage = styled(animated.img)`
   bottom: 0;
   right: 20%;
   height: ${props => props.focused ? '60%' : '50%'};
+  transition: height 0.2s ease-in-out;
 `;
 
 export default Yuusaku;

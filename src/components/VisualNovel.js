@@ -4,6 +4,7 @@ import background from '../assets/images/background_1.png';
 import DialogueContainer from './DialogueContainer';
 import Yuusaku from './Yuusaku';
 import Yacchan from './Yacchan';
+import Sweat from './Sweat';
 
 const VisualNovel = ({ isPlaying, trackProgress, currentSubtitle, currentFocus }) => {
   return (
@@ -16,6 +17,7 @@ const VisualNovel = ({ isPlaying, trackProgress, currentSubtitle, currentFocus }
       />
       <Yuusaku isPlaying={isPlaying} trackProgress={trackProgress} currentFocus={currentFocus} />
       <Yacchan isPlaying={isPlaying} trackProgress={trackProgress} currentFocus={currentFocus} />
+      <Sweat trackProgress={trackProgress} />
     </VisualNovelContainer>
   );
 };

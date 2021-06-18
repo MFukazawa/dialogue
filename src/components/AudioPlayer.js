@@ -4,7 +4,7 @@ import AudioControls from './AudioControls';
 import audioSrc from '../assets/audio/dialogue.mp3';
 import VisualNovel from './VisualNovel';
 
-const AudioPlayer = ({ track }) => {
+const AudioPlayer = () => {
   const [trackProgress, setTrackProgress] = useState(0);
   const [isPlaying, setIsPlaying] = useState(false);
   const [hasEnded, setHasEnded] = useState(false);
@@ -39,9 +39,9 @@ const AudioPlayer = ({ track }) => {
 
     intervalRef.current = setInterval(() => {
       if (audioRef.current.currentTime === audioRef.current.duration) {
-        setHasEnded(true)
+        setHasEnded(true);
       } else {
-        setHasEnded(false)
+        setHasEnded(false);
       }
 
       if (audioRef.current.ended) {
@@ -49,7 +49,7 @@ const AudioPlayer = ({ track }) => {
       } else {
         setTrackProgress(audioRef.current.currentTime);
       }
-    }, [500]);
+    }, [1000]);
   };
 
   const onScrub = (value) => {
@@ -85,43 +85,43 @@ const AudioPlayer = ({ track }) => {
       start: '0:00:00',
       end: '0:03:90',
       text: 'Yuusaku: "Uh...Where are we?"',
-      focused: 'Yuusaku'
+      focused: 'Yuusaku',
     },
     {
       start: '0:03:90',
       end: '0:07:90',
       text: 'Yacchan: "This is our home, Yuusaku!"',
-      focused: 'Yacchan'
+      focused: 'Yacchan',
     },
     {
       start: '0:07:90',
       end: '0:10:00',
-      text: 'Yuusaku: "Oh...(I guess that means we live here together..?)"',
-      focused: 'Yuusaku'
+      text: 'Yuusaku: "Oh..."',
+      focused: 'Yuusaku',
     },
     {
       start: '0:10:00',
       end: '0:16:90',
-      text: 'Yuusaku: "Oh...(I guess that means we live here together..?)"',
-      focused: 'Yuusaku'
+      text: 'Yuusaku: "In other words, I live with this person."',
+      focused: 'Yuusaku',
     },
     {
       start: '0:16:90',
       end: '0:23:50',
       text: 'Yacchan: "This is the first time you\'ve been home in a week. Do you remember anything?"',
-      focused: 'Yacchan'
+      focused: 'Yacchan',
     },
     {
       start: '0:23:50',
       end: '0:32:00',
       text: 'Yuusaku: "No...... Everything still feels foreign to me. Err...... Sorry, I guess."',
-      focused: 'Yuusaku'
+      focused: 'Yuusaku',
     },
     {
       start: '0:32:00',
       end: '0:40:00',
       text: 'Yacchan: "Oh, it\'s okay, you don\'t need to apologize. Take your time and everything will come back to you little by little."',
-      focused: 'Yacchan'
+      focused: 'Yacchan',
     },
   ];
 
@@ -134,7 +134,7 @@ const AudioPlayer = ({ track }) => {
           return parseFloat(
             timeArray[0] * 60 + timeArray[1] + timeArray[2] / 100
           );
-       };
+        };
 
         const currentTime = audioRef.current.currentTime;
 
