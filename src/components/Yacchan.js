@@ -12,7 +12,7 @@ const Yacchan = ({ isPlaying, trackProgress, currentFocus }) => {
     from: { opacity: 0 },
     enter: { opacity: 1 },
     leave: { opacity: 0 },
-    config: config.molasses,
+    config: config.slow,
   });
 
   // TODO receive via props
@@ -41,45 +41,30 @@ const Yacchan = ({ isPlaying, trackProgress, currentFocus }) => {
     }
   }, [trackProgress, isPlaying, isRegularPose, isSidePose, isThoughtPose]);
 
-  if (currentPose === 'regular') {
-    return transitions(
-      (styles, item) =>
-        item && (
-          <YacchanImage
-            style={styles}
-            focused={focused}
-            src={regularPose}
-            alt='Drawing of Yacchan, a blonde girl in a happy pose.'
-          />
-        )
-    );
-  } else if (currentPose === 'side') {
-    return transitions(
-      (styles, item) =>
-        item && (
-          <YacchanImage
-            style={styles}
-            focused={focused}
-            src={sidePose}
-            alt='Drawing of Yacchan, a blonde girl smiling.'
-          />
-        )
-    );
-  } else if (currentPose === 'thought') {
-    return transitions(
-      (styles, item) =>
-        item && (
-          <YacchanImage
-            style={styles}
-            focused={focused}
-            src={thoughtPose}
-            alt='Drawing of Yacchan, a blonde girl looking inquisitive.'
-          />
-        )
-    );
-  }
-
-  return null;
+  return transitions((styles, item) =>
+    item === 'side' ? (
+      <YacchanImage
+        style={styles}
+        focused={focused}
+        src={sidePose}
+        alt='Drawing of Yacchan, a blonde girl smiling.'
+      />
+    ) : item === 'regular' ? (
+      <YacchanImage
+        style={styles}
+        focused={focused}
+        src={regularPose}
+        alt='Drawing of Yacchan, a blonde girl in a happy pose.'
+      />
+    ) : item === 'thought' ? (
+      <YacchanImage
+        style={styles}
+        focused={focused}
+        src={thoughtPose}
+        alt='Drawing of Yacchan, a blonde girl looking inquisitive.'
+      />
+    ) : null
+  );
 };
 
 const YacchanImage = styled(animated.img)`

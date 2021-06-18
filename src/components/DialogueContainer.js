@@ -4,11 +4,11 @@ import { useSpring, animated, config } from 'react-spring';
 
 const DialogueContainer = ({ isPlaying, currentSubtitle }) => {
   const props = useSpring({
-    from: { opacity: 0, transform: "translateY(-100%)" },
-    to: { opacity: 1, transform: "translateY(0)" },
-    leave: { opacity: 0, transform: "translateY(100%)" },
+    from: { opacity: 0, transform: 'translateY(-100%)' },
+    to: { opacity: 1, transform: 'translateY(0)' },
+    leave: { opacity: 0, transform: 'translateY(100%)' },
     delay: 1000,
-    config: config.gentle
+    config: config.gentle,
   });
 
   const propsTest = useSpring({
@@ -16,7 +16,7 @@ const DialogueContainer = ({ isPlaying, currentSubtitle }) => {
     to: { opacity: 1 },
     leave: { opacity: 0 },
     delay: 1300,
-    config: config.molasses
+    config: config.molasses,
   });
 
   if (isPlaying) {

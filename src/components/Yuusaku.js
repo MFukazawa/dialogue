@@ -12,7 +12,7 @@ const Yuusaku = ({ isPlaying, trackProgress, currentFocus }) => {
     from: { opacity: 0 },
     enter: { opacity: 1 },
     leave: { opacity: 0 },
-    config: config.molasses,
+    config: config.slow,
   });
 
   // TODO receive via props
@@ -26,64 +26,45 @@ const Yuusaku = ({ isPlaying, trackProgress, currentFocus }) => {
   useEffect(() => {
     if (isPlaying && isRegularPose) {
       setCurrentPose('regular');
-      console.log('set reg');
     }
 
     if (isPlaying && isThoughtPose) {
       setCurrentPose('thought');
-      console.log('set thought');
     }
 
     if (isPlaying && isLaughPose) {
       setCurrentPose('laugh');
-      console.log('set laugh');
     }
 
     if (!isPlaying) {
       setCurrentPose('');
-      console.log('reset');
     }
   }, [trackProgress, isPlaying, isRegularPose, isThoughtPose, isLaughPose]);
 
-  if (currentPose === 'regular') {
-    return transitions(
-      (styles, item) =>
-        item && (
-          <YuusakuImage
-            style={styles}
-            focused={focused}
-            src={regularPose}
-            alt='Drawing of Yuusaku, a boy with glasses and hands on his hips.'
-          />
-        )
-    );
-  } else if (currentPose === 'thought') {
-    return transitions(
-      (styles, item) =>
-        item && (
-          <YuusakuImage
-            style={styles}
-            focused={focused}
-            src={thoughtPose}
-            alt='Drawing of Yuusaku, a boy with glasses in a thinking pose.'
-          />
-        )
-    );
-  } else if (currentPose === 'laugh') {
-    return transitions(
-      (styles, item) =>
-        item && (
-          <YuusakuImage
-            style={styles}
-            focused={focused}
-            src={laughPose}
-            alt='Drawing of Yuusaku, a boy with glasses laughing.'
-          />
-        )
-    );
-  }
-
-  return null;
+  return transitions((styles, item) =>
+    item === 'regular' ? (
+      <YuusakuImage
+        style={styles}
+        focused={focused}
+        src={regularPose}
+        alt='Drawing of Yuusaku, a boy with glasses and hands on his hips.'
+      />
+    ) : item === 'thought' ? (
+      <YuusakuImage
+        style={styles}
+        focused={focused}
+        src={thoughtPose}
+        alt='Drawing of Yuusaku, a boy with glasses in a thinking pose.'
+      />
+    ) : item === 'laugh' ? (
+      <YuusakuImage
+        style={styles}
+        focused={focused}
+        src={laughPose}
+        alt='Drawing of Yuusaku, a boy with glasses laughing.'
+      />
+    ) : null
+  );
 };
 
 const YuusakuImage = styled(animated.img)`
