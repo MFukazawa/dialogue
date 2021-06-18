@@ -29,11 +29,14 @@ const AudioControls = ({ audioRef, isPlaying, togglePlay, hasEnded }) => {
       );
     } else {
       return (
-        <img src="https://s2.svgbox.net/materialui.svg?ic=replay" width="32" height="32" alt="Replay button icon" />
+        <img
+          src='https://s2.svgbox.net/materialui.svg?ic=replay'
+          width='32'
+          height='32'
+          alt='Replay button icon'
+        />
       );
     }
-
-    // }
   };
 
   return (
@@ -68,7 +71,6 @@ const AudioControls = ({ audioRef, isPlaying, togglePlay, hasEnded }) => {
   );
 };
 
-// CSS
 const AudioControlsContainer = styled.div`
   display: flex;
   justify-content: center;

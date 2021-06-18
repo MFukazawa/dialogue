@@ -1,10 +1,10 @@
 import React from 'react';
 import styled from 'styled-components';
-import background from '../assets/images/background_1.png';
 import DialogueContainer from './DialogueContainer';
 import Yuusaku from './Yuusaku';
 import Yacchan from './Yacchan';
 import Sweat from './Sweat';
+import background from '../assets/images/background_1.png';
 
 const VisualNovel = ({
   isPlaying,

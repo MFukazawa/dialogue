@@ -1,8 +1,8 @@
 import React, { useState, useEffect, useRef } from 'react';
 import styled from 'styled-components';
+import VisualNovel from './VisualNovel';
 import AudioControls from './AudioControls';
 import audioSrc from '../assets/audio/dialogue.mp3';
-import VisualNovel from './VisualNovel';
 
 const AudioPlayer = () => {
   const [trackProgress, setTrackProgress] = useState(0);
@@ -78,6 +78,7 @@ const AudioPlayer = () => {
   let currentSubtitle = '';
   let currentFocus = '';
 
+  // Would be fetched from an API
   const subtitles = [
     {
       start: '0:00:00',

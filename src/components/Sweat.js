@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react';
-import sweat from '../assets/images/sweat.png';
 import { animated, config, useTransition } from 'react-spring';
+import sweat from '../assets/images/sweat.png';
 
 const Sweat = ({ trackProgress }) => {
   const [show, setShow] = useState(false);

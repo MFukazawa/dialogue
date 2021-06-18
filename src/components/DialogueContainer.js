@@ -1,7 +1,6 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import styled from 'styled-components';
 import { useSpring, animated, config } from 'react-spring';
-import { useEffect } from 'react/cjs/react.development';
 
 const DialogueContainer = ({ isPlaying, currentSubtitle }) => {
   const [currentLine, setCurrentLine] = useState([]);

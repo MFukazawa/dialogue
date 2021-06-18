@@ -1,9 +1,9 @@
 import React, { useState, useEffect } from 'react';
+import styled from 'styled-components';
+import { animated, config, useTransition } from 'react-spring';
 import regularPose from '../assets/images/yuusaku/pose_1.png';
 import thoughtPose from '../assets/images/yuusaku/pose_2.png';
 import laughPose from '../assets/images/yuusaku/pose_3.png';
-import { animated, config, useTransition } from 'react-spring';
-import styled from 'styled-components';
 
 const Yuusaku = ({ isPlaying, trackProgress, currentFocus }) => {
   const [currentPose, setCurrentPose] = useState('');

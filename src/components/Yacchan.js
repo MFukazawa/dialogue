@@ -1,9 +1,9 @@
 import React, { useState, useEffect } from 'react';
+import styled from 'styled-components';
+import { animated, config, useTransition } from 'react-spring';
 import regularPose from '../assets/images/yacchan/pose_1.png';
 import sidePose from '../assets/images/yacchan/pose_2.png';
 import thoughtPose from '../assets/images/yacchan/pose_3.png';
-import { animated, config, useTransition } from 'react-spring';
-import styled from 'styled-components';
 
 const Yacchan = ({ isPlaying, trackProgress, currentFocus }) => {
   const [currentPose, setCurrentPose] = useState('');
