@@ -24,10 +24,9 @@ const DialogueContainer = ({ isPlaying, currentSubtitle }) => {
 
   useEffect(() => {
     const arr = currentSubtitle.split(' ');
-    setCurrentLine(arr)
-    setShake('live')
-
-  }, [currentSubtitle])
+    setCurrentLine(arr);
+    setShake('live');
+  }, [currentSubtitle]);
 
   const dialogueArray = currentLine.map((item, index) => {
     const active = item === shake ? 'active' : '';
@@ -35,27 +34,8 @@ const DialogueContainer = ({ isPlaying, currentSubtitle }) => {
       <React.Fragment key={index}>
         <span className={active}>{`${item} `}</span>
       </React.Fragment>
-    )
+    );
   });
-
-  // const renderedItems = items.map((item, index) => {
-  //   const active = index === activeIndex ? 'active' : '';
-
-  //   return (
-  //     <React.Fragment key={item.title}>
-  //       <div
-  //         className={`title ${active}`}
-  //         onClick={() => onTitleClick(index)}
-  //       >
-  //         <i className="dropdown icon"></i>
-  //         {item.title}
-  //       </div>
-  //       <div className={`content ${active}`}>
-  //         <p>{item.content}</p>
-  //       </div>
-  //     </React.Fragment>
-  //   )
-  // })
 
   if (isPlaying) {
     return (
