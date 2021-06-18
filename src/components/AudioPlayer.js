@@ -8,7 +8,6 @@ const AudioPlayer = () => {
   const [trackProgress, setTrackProgress] = useState(0);
   const [isPlaying, setIsPlaying] = useState(false);
   const [hasEnded, setHasEnded] = useState(false);
-  // const [currentSubtitle, setCurrentSubtitle] = useState('');
 
   const audioRef = useRef(new Audio(audioSrc));
   const intervalRef = useRef();
@@ -79,7 +78,6 @@ const AudioPlayer = () => {
   let currentSubtitle = '';
   let currentFocus = '';
 
-  // useEffect(() => {
   const subtitles = [
     {
       start: '0:00:00',
@@ -142,7 +140,6 @@ const AudioPlayer = () => {
           currentTime >= getTimeInSeconds(subtitle.start) &&
           currentTime <= getTimeInSeconds(subtitle.end)
         ) {
-          // setCurrentSubtitle(subtitle.text)
           currentSubtitle = subtitle.text;
           currentFocus = subtitle.focused;
         }
@@ -152,11 +149,7 @@ const AudioPlayer = () => {
     }
   };
 
-  //   playTranscript();
-  // }, [currentSubtitle])
-
   return (
-    // TODO update onTimeUpdate={() => playTranscript}
     <AudioPlayerContainer onTimeUpdate={playTranscript()}>
       <VisualNovel
         isPlaying={isPlaying}

@@ -1,8 +1,10 @@
-import React from 'react';
+import React, { useState } from 'react';
 import styled from 'styled-components';
 import { useSpring, animated, config } from 'react-spring';
+import { useEffect } from 'react/cjs/react.development';
 
 const DialogueContainer = ({ isPlaying, currentSubtitle }) => {
+  const [currentLine, setCurrentLine] = useState([]);
   const props = useSpring({
     from: { opacity: 0, transform: 'translateY(-100%)' },
     to: { opacity: 1, transform: 'translateY(0)' },
@@ -19,10 +21,22 @@ const DialogueContainer = ({ isPlaying, currentSubtitle }) => {
     config: config.molasses,
   });
 
+  // const subtitleArray = [];
+
+  // const getSubtitleList = (currentSubtitle) => {
+  //   currentSubtitle.split(' ').map((word) => subtitleArray.push(word));
+  // };
+
+  useEffect(() => {
+    const arr = currentSubtitle.split(' ');
+    setCurrentLine(arr)
+
+  }, [currentSubtitle])
+
   if (isPlaying) {
     return (
       <DialogueBox style={props}>
-        <SubtitleText style={propsTest}>{currentSubtitle}</SubtitleText>
+        <SubtitleText style={propsTest}>{currentLine}</SubtitleText>
       </DialogueBox>
     );
   }
