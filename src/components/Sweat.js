@@ -18,7 +18,7 @@ const Sweat = ({ trackProgress }) => {
 
   useEffect(() => {
     setShow(showSweat);
-  });
+  }, [showSweat]);
 
   return transitions(
     (styles, item) =>
