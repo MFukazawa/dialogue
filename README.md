@@ -1,70 +1,49 @@
-# Getting Started with Create React App
+# Dialogue
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+A Visual Novel sample, where two characters exchange dialogue.  Built with Create React App, Styled Components, and React Spring.
 
-## Available Scripts
+## Getting Started
 
-In the project directory, you can run:
+Run `git clone git@github.com:MFukazawa/dialogue.git` and install packages with `yarn add`.
 
-### `yarn start`
+Start the local server with `yarn start`.
 
-Runs the app in the development mode.\
 Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
 
-The page will reload if you make edits.\
-You will also see any lint errors in the console.
+### Main Tasks
+The basic idea is to make a visual novel type experience, where two characters talk to each other. The
+characters change poses and text changes in a dialogue box as the audio track runs.
 
-### `yarn test`
+- [x] Make a page with a simple audio player.
+- [x] Add a background image.
+- [x] Show the two characters on screen at the same time.
+- [x] The audio player must have the following buttons: play/pause.
+- [x] The script is synched to the audio: pausing the audio will pause the script.
+- [x] Translate the provided script into whatever code format you think is best.
+- [x] Hardcode the script in for now, but make it easy to replace it with data from an api.
+- [x] You may use the provided files/script or come up with your own.
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+### Bonus Tasks
+#### Make a single character scheme:
 
-### `yarn build`
+- [ ] One character on screen at a time.
+- [x] When the same character changes pose, use a fade effect.
+- [ ] When a different character appears, use a slide effect.
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
+#### Consider simple animation effects:
+- [ ] Blinking: characters randomly blink over time.
+- [ ] Mouth movement: animate characters’ mouths when they are talking.
+- [x] Effects on top of characters: like sweat drops, angry... 
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+#### Consider text effects:
+- [ ] Text animations: make a single word shake.
+- [x] Text colors/fonts: make a single word have a different color and font.
 
-### `yarn eject`
+#### Audio player:
+Add additional controls to the audio player. The slider should be in sync with the audio.
+- [x] slider, 
+- [x] restart button, 
+- [x] skip forward by 10 seconds. 
+- [x] skip backwards by 10 seconds. 
 
-**Note: this is a one-way operation. Once you `eject`, you can’t go back!**
-
-If you aren’t satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
-
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you’re on your own.
-
-You don’t have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn’t feel obligated to use this feature. However we understand that this tool wouldn’t be useful if you couldn’t customize it when you are ready for it.
-
-## Learn More
-
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
-
-To learn React, check out the [React documentation](https://reactjs.org/).
-
-### Code Splitting
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
-
-### Analyzing the Bundle Size
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
-
-### Making a Progressive Web App
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
-
-### Advanced Configuration
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
-
-### Deployment
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
-
-### `yarn build` fails to minify
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
