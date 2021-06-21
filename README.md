@@ -4,7 +4,7 @@ A Visual Novel sample, where two characters exchange dialogue.  Built with Creat
 
 ## Getting Started
 
-Run `git clone git@github.com:MFukazawa/dialogue.git` and install packages with `yarn add`.
+Run `git clone git@github.com:MFukazawa/dialogue.git` and install packages with `yarn`.
 
 Start the local server with `yarn start`.
 
